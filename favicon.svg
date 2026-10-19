@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Umbra</title>
+  <defs>
+    <linearGradient id="stone" x2="1" y2="1">
+      <stop stop-color="#24383b"/>
+      <stop offset="1" stop-color="#111719"/>
+    </linearGradient>
+    <linearGradient id="anima" x2="0" y2="1">
+      <stop stop-color="#d2fff5"/>
+      <stop offset="1" stop-color="#6cbcac"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="62" height="62" rx="15" fill="url(#stone)"/>
+  <path d="M32 7 56 32 32 57 8 32Z" fill="none" stroke="#65968f" stroke-width="2"/>
+  <path d="M21 20v19l11 9 11-9V20" fill="none" stroke="url(#anima)" stroke-width="6" stroke-linejoin="bevel"/>
+  <path d="m32 12 4 6-4 6-4-6Z" fill="#b1f4e3"/>
+</svg>
