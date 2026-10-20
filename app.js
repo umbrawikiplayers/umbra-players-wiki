@@ -31,7 +31,7 @@
     if (!terms.length) { $('search-status').textContent = 'Procure um nome ou assunto. A busca ignora acentos.'; return; }
     const matches = (window.UMBRA_SEARCH || []).map(p => {
       const title = clean(p.title), text = clean(p.text), desc = clean(p.desc);
-      return {...p, score: terms.every(t => (title+' '+text+' '+desc).includes(t)) ? terms.reduce((n,t) => n + (title.includes(t)?10:0)+(desc.includes(t)?3:0)+1,0) : 0};
+      return {...p, score: terms.every(t => (title+' '+text+' '+desc).includes(t)) ? terms.reduce((n,t) => n + (title.includes(t)?10:0)+(desc.includes(t)?3:0)+1,p.group==='Item card'?8:0) : 0};
     }).filter(p => p.score).sort((a,b) => b.score-a.score);
     $('search-status').textContent = matches.length ? `${matches.length} página${matches.length === 1 ? '' : 's'} encontrada${matches.length === 1 ? '' : 's'}.` : 'Nenhuma página encontrada. Tente outro termo.';
     matches.forEach(p => {
