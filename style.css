@@ -13,3 +13,6 @@
 
 /* Bestiário compartilhado */
 .bestiary-controls{display:flex;gap:12px;flex-wrap:wrap;margin:1rem 0}.bestiary-controls input,.bestiary-controls select{font:inherit;padding:.65rem;border:1px solid #888;border-radius:6px;max-width:100%;background:var(--bg,#fff);color:inherit}.bestiary-controls input{flex:1;min-width:180px}.bestiary-grid{display:grid;gap:24px}.bestiary-entry{border:1px solid #8885;border-radius:8px;padding:14px;min-width:0}.bestiary-entry img{display:block;width:100%;height:auto}.bestiary-entry[hidden]{display:none}.bestiary-entry h2{margin-top:0}.bestiary-count{font-size:.85em;opacity:.75}
+
+/* Item cards: leitura responsiva e abertura da imagem integral. */
+.item-card{margin:20px 0 30px;max-width:620px}.item-card img{display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line,#8b795b)}.item-card figcaption{font-size:.8em;opacity:.8;margin-top:6px}
