@@ -19,3 +19,17 @@
 .downtime-character{border-top:1px solid var(--line,#687168);margin:0 0 0 12px}.downtime-character p{margin-top:4px}.downtime-links{font-size:.85em}
 @media(max-width:600px){.downtime-period{padding:3px 10px}.downtime-character{margin-left:5px}.downtime-rewards{margin-left:0}}
 @media print{.downtime-period>*,.downtime-character>*{display:block!important}}
+
+/* Relatos: caixas laterais de mapas e creature cards, como numa enciclopédia. */
+.reading:has(.session-beat){max-width:1100px}
+.session-beat{display:flow-root;scroll-margin-top:100px;margin:0 0 36px}
+.session-beat>h2{margin:28px 0 20px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.session-beat>h3{margin:0 0 12px;font-size:1rem;color:var(--muted)}
+.beat-media{float:right;width:43%;max-width:330px;margin:0 0 20px 26px;padding:10px;border:1px solid var(--line);border-radius:5px;background:var(--panel);font-size:12px;line-height:1.5}
+.beat-media figure{margin:0 0 12px!important;padding:0!important;border:0!important;background:none!important}.beat-media figure:last-child{margin-bottom:0!important}
+.beat-media figure img{display:block;width:100%;height:auto;max-height:none!important;border-radius:2px}.beat-media figcaption{font-size:11px;line-height:1.5;margin:6px 0 0;color:var(--muted)}
+.beat-media .map-links{font-size:10px;margin:5px 0 12px;gap:4px}.beat-media .map-pin{width:23px;height:23px;font-size:10px}
+.beat-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.beat-card-grid figure{min-width:0}.beat-card-grid figure:only-child{grid-column:1/-1}
+@media(max-width:1000px){.beat-media{width:40%;margin-left:20px}}
+@media(max-width:600px){.beat-media{float:none;width:100%;max-width:none;margin:0 0 22px}.beat-media>figure img{max-height:350px!important;object-fit:contain}.beat-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.session-beat>h2{font-size:24px}}
+@media print{.session-beat{display:block;break-inside:auto}.beat-media{width:35%;float:right}.beat-media figure{break-inside:avoid}}
