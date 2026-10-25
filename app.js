@@ -23,26 +23,19 @@
     if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { setMenu(false); $('menu').focus(); }
   });
   const dialog = $('search-dialog');
-  const clean = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const engine = UMBRA_SEARCH_ENGINE.create(window.UMBRA_SEARCH || []);
   const search = () => {
-    const raw = $('search-input').value.trim();
-    const terms = clean(raw).split(/\s+/).filter(Boolean);
-    const target = $('search-results'); target.replaceChildren();
-    if (!terms.length) { $('search-status').textContent = 'Procure um nome ou assunto. A busca ignora acentos.'; return; }
-    const matches = (window.UMBRA_SEARCH || []).map(p => {
-      const title = clean(p.title), text = clean(p.text), desc = clean(p.desc);
-      return {...p, score: terms.every(t => (title+' '+text+' '+desc).includes(t)) ? terms.reduce((n,t) => n + (title.includes(t)?10:0)+(desc.includes(t)?3:0)+1,p.group==='Item card'?8:0) : 0};
-    }).filter(p => p.score).sort((a,b) => b.score-a.score);
-    $('search-status').textContent = matches.length ? `${matches.length} página${matches.length === 1 ? '' : 's'} encontrada${matches.length === 1 ? '' : 's'}.` : 'Nenhuma página encontrada. Tente outro termo.';
+    const raw = $('search-input').value.trim(), target = $('search-results');
+    target.replaceChildren();
+    if (!raw) { $('search-status').textContent = 'Procure pelo nome, apelido ou assunto. Ex.: downtime, poção ou Haste.'; return; }
+    const matches = engine.search(raw);
+    $('search-status').textContent = matches.length ? (matches[0].approximate ? 'Resultados aproximados · ' : '') + matches.length + ' resultado(s) por relevância' : 'Nenhum resultado. Tente outro nome ou assunto.';
     matches.forEach(p => {
       const a = document.createElement('a'); a.href = p.url;
-      const group = document.createElement('small'); group.textContent = p.group;
+      const group = document.createElement('small'); group.textContent = p.group + ' · ' + p.reason;
       const title = document.createElement('strong'); title.textContent = p.title;
-      const excerpt = document.createElement('span');
-      let pos = clean(p.text).indexOf(terms[0]);
-      const start = Math.max(0,pos-55);
-      excerpt.textContent = start ? '…'+p.text.slice(start,start+180).trim()+'…' : p.desc;
-      a.append(group,title,excerpt); target.append(a);
+      const excerpt = document.createElement('span'); excerpt.textContent = UMBRA_SEARCH_ENGINE.excerpt(p, raw);
+      a.append(group, title, excerpt); target.append(a);
     });
   };
   const openSearch = () => { setMenu(false); if (!dialog.open) dialog.showModal(); $('search-input').focus(); search(); };
