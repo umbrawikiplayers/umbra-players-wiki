@@ -11,3 +11,11 @@
 @media(max-width:760px){.quick-links a{padding:8px 11px;font-size:13px}.map-stage .map-pin{width:25px;height:25px;font-size:11px}.map-links{font-size:12px}.loot-card-table .item-card{width:58vw}.image-viewer{padding:10px}.editor-note{font-size:11px}}
 @media print{.map-pin,.quick-links,.image-viewer,.editor-note{display:none!important}details.card-disclosure>*,details.history-section>*{display:block!important}}
 .image-viewer.actual-size>img{max-width:none;max-height:none;width:auto}.image-viewer>button{display:inline-block;margin:0 8px 12px 0;position:sticky;top:0;background:var(--bg,#13201c);color:inherit;border:1px solid var(--line,#687168);padding:8px 12px;border-radius:4px}
+
+/* Downtimes: resumo visível e detalhes recolhíveis por período e personagem. */
+.downtime-period{margin:20px 0;border:1px solid var(--line,#687168);border-radius:6px;padding:4px 14px}
+.downtime-period>summary,.downtime-character>summary{cursor:pointer;padding:12px 0;line-height:1.5}
+.downtime-title{font-weight:650}.downtime-rewards{display:block;font-size:.86em;font-weight:400;color:var(--muted,#a8b1a8);margin:5px 0 0 18px;line-height:1.6}
+.downtime-character{border-top:1px solid var(--line,#687168);margin:0 0 0 12px}.downtime-character p{margin-top:4px}.downtime-links{font-size:.85em}
+@media(max-width:600px){.downtime-period{padding:3px 10px}.downtime-character{margin-left:5px}.downtime-rewards{margin-left:0}}
+@media print{.downtime-period>*,.downtime-character>*{display:block!important}}
