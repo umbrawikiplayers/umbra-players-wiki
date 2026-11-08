@@ -59,5 +59,6 @@
       direction.addEventListener('click',()=>sort(current,!ascending));
       bar.append(label,direction);table.before(bar);
     }
+    if(/^id$/i.test(labels[0])) sort(0,false);
   });
 })();
